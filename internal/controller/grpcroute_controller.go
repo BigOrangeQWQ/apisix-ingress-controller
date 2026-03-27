@@ -254,7 +254,7 @@ func (r *GRPCRouteReconciler) Reconcile(ctx context.Context, req ctrl.Request) (
 	})
 	UpdateStatus(r.Updater, r.Log, tctx)
 
-	if isRouteAccepted(gateways) && err == nil {
+	if isRouteAccepted(gateways) {
 		routeToUpdate := gr
 		if err := r.Provider.Update(ctx, tctx, routeToUpdate); err != nil {
 			return ctrl.Result{}, err
